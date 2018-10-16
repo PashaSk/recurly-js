@@ -1,6 +1,7 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var minify = ~process.argv.indexOf('-p');
+var webpack = require('webpack');
 
 module.exports = {
   node: {
@@ -47,6 +48,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('recurly.css')
+    new ExtractTextPlugin('recurly.css'),
+    new webpack.BannerPlugin({
+        banner: "https://github.com/PashaSk/recurly-js"
+    })
   ]
 };
